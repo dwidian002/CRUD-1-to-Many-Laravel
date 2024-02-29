@@ -26,6 +26,12 @@ Route::group(['middleware' => 'auth:user'], function(){
         Route::get('/',[App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.index');
         Route::get('/profile',[App\Http\Controllers\DashboardController::class, 'profile'])->name('dashboard.profile');
 
+        Route::get('/kategori',[App\Http\Controllers\KategoriCOntroller::class,'index'])->name('kategori.index');
+        Route::get('/kategori/tambah',[App\Http\Controllers\KategoriCOntroller::class,'tambah'])->name('kategori.tambah');
+        Route::post('/kategori/prosesTambah',[App\Http\Controllers\KategoriCOntroller::class,'prosesTambah'])->name('kategori.prosesTambah');
+        Route::get('/kategori/ubah/{id}',[App\Http\Controllers\KategoriCOntroller::class,'ubah'])->name('kategori.ubah');
+        Route::post('/kategori/prosesUbah',[App\Http\Controllers\KategoriCOntroller::class,'prosesUbah'])->name('kategori.prosesUbah');
+        Route::get('/kategori/hapus{id}',[App\Http\Controllers\KategoriCOntroller::class,'hapus'])->name('kategori.hapus');
     });
 
     Route::get('/logout',[\App\Http\Controllers\AuthController::class,'logout'])->name('auth.logout');
